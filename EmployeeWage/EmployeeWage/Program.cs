@@ -1,10 +1,10 @@
 ﻿namespace EmployeeWage
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            EmployeWageProblem wageProblem = new EmployeWageProblem();
+            EmployeeWageProblem wageProblem = new EmployeeWageProblem();
             wageProblem.EmpWage();
 
 
