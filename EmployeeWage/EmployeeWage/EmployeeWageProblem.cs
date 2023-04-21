@@ -8,24 +8,22 @@ namespace EmployeeWage
 {
     internal class EmployeeWageProblem
     {
-        int empCheck;
-
-        public EmployeeWageProblem(int empChk)
+        const int wagePerHour = 20;
+        const int fullDayHour = 8;
+        int dailyWage = 0;
+        public void EmpWage()
         {
-            this.empCheck = empChk;
-        }
-
-        public void Attendencs()
-        {
-            int IS_PRESENT = 1;
-            if (this.empCheck == IS_PRESENT)
+            Random checkAttendance = new Random();
+            int check = checkAttendance.Next(2);
+            if (check == 1)
             {
+                dailyWage = wagePerHour * fullDayHour;
                 Console.WriteLine("Employee is present");
+                Console.WriteLine("Daily Wage is : " + dailyWage);
             }
             else
-            {
                 Console.WriteLine("Employee is absent");
-            }
+            Console.ReadKey();
         }
     }
 }
