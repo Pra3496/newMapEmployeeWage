@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Employee Wage Using Switch Case");
+            Console.WriteLine("Employee Wage For a Month");
             EmployeeWageProblem wageProblem = new EmployeeWageProblem();
             wageProblem.EmpWage();
 
