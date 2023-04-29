@@ -8,45 +8,41 @@ namespace EmployeeWage
 {
     public class EmployeeWageProblem
     {
-        const int wagePerHour = 20;
-        int workingDays = 1;
-        int totalHours = 0;
-        int dailyWage = 0;
-        int empHour = 0;
-        int totalWageCount = 0;
-        int totalWorkingDays = 0;
-        public void EmpWage()
+        public int empCheck;
+        public const int IS_PARTTIME = 1;
+        public const int IS_FULLTIME = 2;
+        public const int EMP_RATE_PER_HRS = 20;
+        public const int NUM_OF_WORKING_DAYS = 20;
+        public const int MAX_RATE_IN_MONTH = 100;
+
+        public EmployeeWageProblem(int empCheck)
         {
-            Random checkAttendance = new Random();
-            while (totalHours <= 100 && workingDays <= 20)
+            this.empCheck = empCheck;
+        }
+        public void computeEmpWage()
+        {
+            int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+            while (totalEmpHrs < MAX_RATE_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
             {
-                if (totalHours == 100)
-                    break;
-                int check = checkAttendance.Next(3);
-                switch (check)
+                totalWorkingDays++;
+                switch (empCheck)
                 {
-                    case 0:
-                        empHour = 8;
+                    case IS_PARTTIME:
+                        empHrs = 4;
                         break;
-                    case 1:
-                        empHour = 4;
+                    case IS_FULLTIME:
+                        empHrs = 8;
                         break;
-                    case 2:
-                        empHour = 0;
+                    default:
+                        empHrs = 0;
                         break;
                 }
-                dailyWage = wagePerHour * empHour;
-                Console.WriteLine("Employee hours for Day " + workingDays + " is : " + empHour + " with wage : " + dailyWage);
-                totalWageCount += dailyWage;
-                totalHours += empHour;
-                totalWorkingDays = workingDays;
-                workingDays++;
 
+                totalEmpHrs = totalEmpHrs + empHrs;
+                Console.WriteLine("Day#:" + totalWorkingDays + "Emp Hrs: " + empHrs);
             }
-            Console.WriteLine("Total wage count is : " + totalWageCount);
-            Console.WriteLine("Total hours count is : " + totalHours);
-            Console.WriteLine("Total working days is : " + totalWorkingDays);
-            Console.ReadKey();
+            int totalEmpWages = totalEmpHrs * EMP_RATE_PER_HRS;
+            Console.WriteLine("Total Employee wages:" + totalEmpWages);
         }
     }
 }
